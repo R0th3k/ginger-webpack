@@ -1,11 +1,12 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   entry: './src/index.js',
   output: {
     path: __dirname + '/dist',
-    filename: 'bundle.js'
+    filename: 'js/bundle.js'
   }, 
   devServer:{
     port: 7777
@@ -16,14 +17,26 @@ module.exports = {
         test: /\.scss$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader','sass-loader'],
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
     ],
   },
   plugins:[
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: 'styles.min.css'
+      filename: 'css/styles.min.css'
     })
   ]
 }
