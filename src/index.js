@@ -1,11 +1,17 @@
 import "./scss/styles.scss";
 
 import Vue from 'vue';
-import App from './js/components/App.vue';
+import hello from './js/components/HelloWorld.vue';
 
 new Vue({
-  render: h => h(App)
-}).$mount('#app');
+  el:'#app',
+  components:{
+    hello
+  },
+  data:{
+    mensaje: 'Hola Vue!'
+  }
+})
 
 
  

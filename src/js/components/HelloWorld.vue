@@ -6,7 +6,7 @@
 
 <script>
   export default{
-    name:'HelloWorld',
+    name:'hello',
     data(){
       return{
         title:'Hello World from component .vue'
@@ -15,8 +15,6 @@
   }
 </script>
 
-<style lang="scss" scoped>
-h1{
-  color:blue;
-}
+<style lang="scss">
+
 </style>
